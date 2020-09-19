@@ -1,9 +1,3 @@
-let userInput: unknown;
-userInput = 5;
-userInput = 'test';
+const userName = 'Aguilar';
 
-function generateError(message: string, code: number): never {
-    throw { message: message, errorCode: code };
-}
-
-generateError('An error ocurred', 500);
+console.log(userName);

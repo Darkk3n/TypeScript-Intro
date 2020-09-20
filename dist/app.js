@@ -31,4 +31,23 @@ console.log(test.name);
 test.addEmployee('Gera');
 test.addEmployee('Aguilar');
 test.printEmployeeInfo();
+//Inheritance
+//Defined with "extends"
+//Call base constructor with super BEFORE anything else
+class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
+let dep = new ITDepartment('2', ['Gerardo']);
+console.log(dep);
+class AccountingDepartment extends Department {
+    constructor(id, reports) {
+        super(id, 'Accounting');
+        this.reports = reports;
+    }
+    addReport(report) {
+    }
+}
 //# sourceMappingURL=app.js.map

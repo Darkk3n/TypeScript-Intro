@@ -36,3 +36,27 @@ console.log(test.name);
 test.addEmployee('Gera');
 test.addEmployee('Aguilar');
 test.printEmployeeInfo();
+
+//Inheritance
+//Defined with "extends"
+//Call base constructor with super BEFORE anything else
+class ITDepartment extends Department {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
+
+let dep = new ITDepartment('2', ['Gerardo']);
+console.log(dep);
+
+class AccountingDepartment extends Department {
+    constructor(id: string, private reports: string[]) {
+        super(id, 'Accounting');
+    }
+
+    addReport(report: string) {
+
+    }
+}

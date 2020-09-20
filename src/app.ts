@@ -40,7 +40,8 @@ test.printEmployeeInfo();
 
 //Inheritance
 //Defined with "extends"
-//Call base constructor with super BEFORE anything else
+//Call base constructor with "super" BEFORE anything else
+//This referes to "base" ctor in C#
 class ITDepartment extends Department {
     admins: string[];
     constructor(id: string, admins: string[]) {

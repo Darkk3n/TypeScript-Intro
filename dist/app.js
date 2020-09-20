@@ -1,9 +1,10 @@
 "use strict";
 //Class definition. Just like C#
 class Department {
-    constructor(n) {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
         this.employees = [];
-        this.name = n;
     }
     //Declare a new class method
     //Instead of starting with function just put the name of the method (camelCase)
@@ -20,7 +21,7 @@ class Department {
     }
 }
 //Instance. Same instead of var, let is used
-let test = new Department('Foo');
+let test = new Department('1', 'Foo');
 console.log('First Name');
 console.log(test.name);
 //Usage of class method

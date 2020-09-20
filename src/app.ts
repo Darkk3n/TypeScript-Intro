@@ -1,10 +1,8 @@
 //Class definition. Just like C#
 class Department {
-    public name: string;
     private employees: string[] = [];
 
-    constructor(n: string) {
-        this.name = n;
+    constructor(private id: string, public name: string) {
     }
 
     //Declare a new class method
@@ -25,7 +23,7 @@ class Department {
 }
 
 //Instance. Same instead of var, let is used
-let test = new Department('Foo');
+let test = new Department('1', 'Foo');
 console.log('First Name');
 console.log(test.name);
 

@@ -1,6 +1,7 @@
 //Class definition. Just like C#
 class Department {
-    private employees: string[] = [];
+    //Override base class properties with protected
+    protected employees: string[] = [];
 
     constructor(private id: string, public name: string) {
     }
@@ -59,4 +60,17 @@ class AccountingDepartment extends Department {
     addReport(report: string) {
 
     }
+
+    addEmployee(name: string) {
+        if (name === 'Gerardo') {
+            return;
+        }
+        this.employees.push(name);
+    }
 }
+
+let acct = new AccountingDepartment('3', []);
+acct.addEmployee('Gera');
+acct.addEmployee('Gerardo');
+acct.printEmployeeInfo();
+

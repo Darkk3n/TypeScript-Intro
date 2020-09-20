@@ -4,6 +4,7 @@ class Department {
     constructor(id, name) {
         this.id = id;
         this.name = name;
+        //Override base class properties with protected
         this.employees = [];
     }
     //Declare a new class method
@@ -49,5 +50,15 @@ class AccountingDepartment extends Department {
     }
     addReport(report) {
     }
+    addEmployee(name) {
+        if (name === 'Gerardo') {
+            return;
+        }
+        this.employees.push(name);
+    }
 }
+let acct = new AccountingDepartment('3', []);
+acct.addEmployee('Gera');
+acct.addEmployee('Gerardo');
+acct.printEmployeeInfo();
 //# sourceMappingURL=app.js.map

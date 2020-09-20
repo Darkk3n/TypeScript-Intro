@@ -2,6 +2,7 @@
 //Class definition. Just like C#
 class Department {
     constructor(n) {
+        this.employees = [];
         this.name = n;
     }
     //Declare a new class method
@@ -9,6 +10,13 @@ class Department {
     //And the parameters needed
     changeName(newName) {
         this.name = newName;
+    }
+    addEmployee(employeeName) {
+        this.employees.push(employeeName);
+    }
+    printEmployeeInfo() {
+        console.log(this.employees.length);
+        console.log(this.employees);
     }
 }
 //Instance. Same instead of var, let is used
@@ -19,4 +27,7 @@ console.log(test.name);
 test.changeName('New Departement name');
 console.log('Name after calling class method');
 console.log(test.name);
+test.addEmployee('Gera');
+test.addEmployee('Aguilar');
+test.printEmployeeInfo();
 //# sourceMappingURL=app.js.map

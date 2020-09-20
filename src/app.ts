@@ -1,6 +1,7 @@
 //Class definition. Just like C#
 class Department {
-    name: string;
+    public name: string;
+    private employees: string[] = [];
 
     constructor(n: string) {
         this.name = n;
@@ -11,6 +12,15 @@ class Department {
     //And the parameters needed
     changeName(newName: string) {
         this.name = newName;
+    }
+
+    addEmployee(employeeName: string) {
+        this.employees.push(employeeName);
+    }
+
+    printEmployeeInfo() {
+        console.log(this.employees.length);
+        console.log(this.employees);
     }
 }
 
@@ -23,3 +33,8 @@ console.log(test.name);
 test.changeName('New Departement name');
 console.log('Name after calling class method');
 console.log(test.name);
+
+
+test.addEmployee('Gera');
+test.addEmployee('Aguilar');
+test.printEmployeeInfo();

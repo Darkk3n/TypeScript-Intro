@@ -48,8 +48,23 @@ class AccountingDepartment extends Department {
     constructor(id, reports) {
         super(id, 'Accounting');
         this.reports = reports;
+        this.lastReport = reports[0];
+    }
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error('No report found');
+    }
+    //It's like a method
+    set mostRecentReport(lastRep) {
+        if (!lastRep) {
+            throw new Error('No report sent');
+        }
+        this.addReport(lastRep);
     }
     addReport(report) {
+        this.lastReport = report;
     }
     addEmployee(name) {
         if (name === 'Gerardo') {
@@ -58,8 +73,10 @@ class AccountingDepartment extends Department {
         this.employees.push(name);
     }
 }
-let acct = new AccountingDepartment('3', []);
+let acct = new AccountingDepartment('3', ['Report1']);
 acct.addEmployee('Gera');
 acct.addEmployee('Gerardo');
 acct.printEmployeeInfo();
+console.log(acct.mostRecentReport);
+acct.mostRecentReport = '';
 //# sourceMappingURL=app.js.map

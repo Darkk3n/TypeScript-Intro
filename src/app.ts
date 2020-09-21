@@ -54,12 +54,30 @@ let dep = new ITDepartment('2', ['Gerardo']);
 console.log(dep);
 
 class AccountingDepartment extends Department {
+    private lastReport: string;
+
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error('No report found');
+    }
+
+    //It's like a method
+    set mostRecentReport(lastRep: string) {
+        if (!lastRep) {
+            throw new Error('No report sent');
+        }
+        this.addReport(lastRep);
+    }
+
     constructor(id: string, private reports: string[]) {
         super(id, 'Accounting');
+        this.lastReport = reports[0];
     }
 
     addReport(report: string) {
-
+        this.lastReport = report;
     }
 
     addEmployee(name: string) {
@@ -70,8 +88,10 @@ class AccountingDepartment extends Department {
     }
 }
 
-let acct = new AccountingDepartment('3', []);
+let acct = new AccountingDepartment('3', ['Report1']);
 acct.addEmployee('Gera');
 acct.addEmployee('Gerardo');
 acct.printEmployeeInfo();
 
+console.log(acct.mostRecentReport);
+acct.mostRecentReport = '';

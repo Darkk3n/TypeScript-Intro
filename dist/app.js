@@ -20,7 +20,11 @@ class Department {
         console.log(this.employees.length);
         console.log(this.employees);
     }
+    static createEmployee(empName) {
+        return { name: empName };
+    }
 }
+const emp = Department.createEmployee('Foo');
 //Instance. Same instead of var, let is used
 let test = new Department('1', 'Foo');
 console.log('First Name');

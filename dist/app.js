@@ -26,16 +26,13 @@ class Department {
 }
 const emp = Department.createEmployee('Foo');
 //Instance. Same instead of var, let is used
-let test = new Department('1', 'Foo');
-console.log('First Name');
-console.log(test.name);
+// let test = new Department('1', 'Foo');
+// console.log('First Name');
+// console.log(test.name);
 //Usage of class method
-test.changeName('New Departement name');
-console.log('Name after calling class method');
-console.log(test.name);
-test.addEmployee('Gera');
-test.addEmployee('Aguilar');
-test.printEmployeeInfo();
+// test.changeName('New Departement name');
+// console.log('Name after calling class method');
+// console.log(test.name);
 //Inheritance
 //Defined with "extends"
 //Call base constructor with "super" BEFORE anything else
@@ -45,14 +42,21 @@ class ITDepartment extends Department {
         super(id, 'IT');
         this.admins = admins;
     }
+    describe() {
+        console.log(`'${this.name} - ${this.id}'`);
+    }
 }
 let dep = new ITDepartment('2', ['Gerardo']);
 console.log(dep);
+dep.describe();
 class AccountingDepartment extends Department {
     constructor(id, reports) {
         super(id, 'Accounting');
         this.reports = reports;
         this.lastReport = reports[0];
+    }
+    describe() {
+        console.log(`'${this.name} - ${this.id}'`);
     }
     get mostRecentReport() {
         if (this.lastReport) {
@@ -81,6 +85,6 @@ let acct = new AccountingDepartment('3', ['Report1']);
 acct.addEmployee('Gera');
 acct.addEmployee('Gerardo');
 acct.printEmployeeInfo();
+acct.describe();
 console.log(acct.mostRecentReport);
-acct.mostRecentReport = '';
 //# sourceMappingURL=app.js.map

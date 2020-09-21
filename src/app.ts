@@ -1,9 +1,9 @@
 //Class definition. Just like C#
-class Department {
+abstract class Department {
     //Override base class properties with protected
     protected employees: string[] = [];
 
-    constructor(private id: string, public name: string) {
+    constructor(public readonly id: string, public name: string) {
     }
 
     //Declare a new class method
@@ -25,24 +25,23 @@ class Department {
     static createEmployee(empName: string) {
         return { name: empName }
     }
+
+    //Abstract method
+    abstract describe(this: Department): void
 }
 
 const emp = Department.createEmployee('Foo');
 
 //Instance. Same instead of var, let is used
-let test = new Department('1', 'Foo');
-console.log('First Name');
-console.log(test.name);
+// let test = new Department('1', 'Foo');
+// console.log('First Name');
+// console.log(test.name);
 
 //Usage of class method
-test.changeName('New Departement name');
-console.log('Name after calling class method');
-console.log(test.name);
+// test.changeName('New Departement name');
+// console.log('Name after calling class method');
+// console.log(test.name);
 
-
-test.addEmployee('Gera');
-test.addEmployee('Aguilar');
-test.printEmployeeInfo();
 
 //Inheritance
 //Defined with "extends"
@@ -54,13 +53,25 @@ class ITDepartment extends Department {
         super(id, 'IT');
         this.admins = admins;
     }
+    describe(this: Department): void {
+        console.log(`'${this.name} - ${this.id}'`)
+    }
 }
 
 let dep = new ITDepartment('2', ['Gerardo']);
 console.log(dep);
+dep.describe();
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+    constructor(id: string, private reports: string[]) {
+        super(id, 'Accounting');
+        this.lastReport = reports[0];
+    }
+
+    describe(this: Department): void {
+        console.log(`'${this.name} - ${this.id}'`)
+    }
 
     get mostRecentReport() {
         if (this.lastReport) {
@@ -77,10 +88,6 @@ class AccountingDepartment extends Department {
         this.addReport(lastRep);
     }
 
-    constructor(id: string, private reports: string[]) {
-        super(id, 'Accounting');
-        this.lastReport = reports[0];
-    }
 
     addReport(report: string) {
         this.lastReport = report;
@@ -98,6 +105,6 @@ let acct = new AccountingDepartment('3', ['Report1']);
 acct.addEmployee('Gera');
 acct.addEmployee('Gerardo');
 acct.printEmployeeInfo();
+acct.describe();
 
 console.log(acct.mostRecentReport);
-acct.mostRecentReport = '';

@@ -14,4 +14,5 @@ function merge(objA, objB) {
 const mergedObj = (merge({ name: 'Gerardo' }, { age: 32 }));
 console.log(mergedObj.age);
 console.log(mergedObj.name);
+console.log(mergedObj);
 //# sourceMappingURL=app.js.map

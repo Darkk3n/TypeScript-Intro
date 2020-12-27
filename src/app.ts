@@ -12,6 +12,7 @@ add = (n1: number, n2: number) => {
 
 interface Named {
     readonly name: string;
+    outputName?: string;
 }
 
 interface Greetable extends Named {
@@ -33,5 +34,5 @@ class Person implements Greetable {
 let user1: Greetable;
 user1 = new Person('Gerardo');
 
-user1.greet('Hi');
+user1.greet('Hello');
 console.log(user1);
